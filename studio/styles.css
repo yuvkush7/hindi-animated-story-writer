@@ -1,0 +1,240 @@
+/* Story Studio — clean, dependency-free styles.
+   Devanagari-friendly, light background, no external frameworks. */
+
+:root {
+  --bg: #f7f8fa;
+  --panel-bg: #ffffff;
+  --border: #d9dde3;
+  --text: #1c2430;
+  --muted: #667085;
+  --accent: #2563eb;
+  --narration-bg: #eef2f7;
+  --narration-border: #94a3b8;
+  --dialogue-bg: #ffffff;
+  --dialogue-border: #2563eb;
+  --current-bg: #fff7d6;
+  --current-border: #f59e0b;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  /* Web-safe stack that renders Devanagari on major platforms. */
+  font-family: "Nirmala UI", "Noto Sans Devanagari", "Mangal",
+    "Kohinoor Devanagari", "Segoe UI", system-ui, Arial, sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 20px;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-main { flex: 1 1 420px; min-width: 260px; }
+.header-side { flex: 0 0 auto; text-align: right; display: flex; flex-direction: column; gap: 6px; }
+
+#story-title { margin: 0 0 6px; font-size: 1.5rem; }
+.overview { margin: 0 0 6px; color: var(--text); }
+.moral { margin: 0; color: var(--muted); font-style: italic; }
+.moral::before { content: "सीख: "; font-style: normal; font-weight: 700; }
+
+.progress {
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 6px 10px;
+  background: var(--narration-bg);
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.audio-state {
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+.audio-state[data-state="idle"] { color: var(--muted); }
+.audio-state[data-state="playing"] { color: #166534; background: #e7f6ec; border-color: #86d7a3; }
+.audio-state[data-state="paused"] { color: #92400e; background: #fff3e0; border-color: #f2c789; }
+.audio-state[data-state="missing-audio"] { color: #9a1c1c; background: #fdecec; border-color: #f0a3a3; }
+
+.current-context { font-size: 0.85rem; color: var(--muted); }
+
+/* ---------- Error banner ---------- */
+.error-banner {
+  margin: 12px 20px;
+  padding: 12px 16px;
+  background: #fdecec;
+  color: #9a1c1c;
+  border: 1px solid #f0a3a3;
+  border-radius: 8px;
+}
+
+/* ---------- Layout ---------- */
+.layout {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.sidebar {
+  flex: 0 0 300px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.panel-title {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: var(--muted);
+  text-transform: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+/* ---------- Scene list ---------- */
+.scene-list, .character-list { list-style: none; margin: 0; padding: 0; }
+
+.scene-item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.scene-item:hover { background: var(--narration-bg); }
+.scene-item.active-scene { border-color: var(--accent); background: #eaf0fe; }
+.scene-item .scene-id { font-size: 0.75rem; color: var(--muted); }
+.scene-item .scene-title { font-weight: 700; }
+.scene-item .scene-meta { font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- Character list ---------- */
+.character-item {
+  padding: 6px 4px;
+  border-bottom: 1px dashed var(--border);
+}
+.character-item:last-child { border-bottom: none; }
+.character-item .char-name { font-weight: 700; }
+.character-item .char-meta { font-size: 0.85rem; color: var(--muted); }
+
+/* ---------- Transcript ---------- */
+.transcript-pane {
+  flex: 1 1 auto;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.transcript {
+  height: 100%;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+
+.scene-heading {
+  margin: 18px 0 10px;
+  font-size: 1.1rem;
+  color: var(--accent);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 4px;
+}
+.scene-heading:first-child { margin-top: 0; }
+.scene-heading .scene-heading-meta { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+
+.beat {
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border-left: 4px solid transparent;
+  scroll-margin: 20px;
+}
+
+/* Narration styled distinctly from dialogue */
+.beat.narration {
+  background: var(--narration-bg);
+  border-left-color: var(--narration-border);
+  font-style: italic;
+  color: #334155;
+}
+.beat.dialogue {
+  background: var(--dialogue-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--dialogue-border);
+}
+
+.beat .speaker { font-weight: 700; display: block; margin-bottom: 2px; }
+.beat.narration .speaker { color: #475569; }
+.beat.dialogue .speaker { color: var(--accent); }
+.beat .beat-text { display: block; }
+.beat .beat-ordinal { float: right; font-size: 0.75rem; color: var(--muted); }
+
+/* Prominent current-beat highlight */
+.beat.current {
+  background: var(--current-bg);
+  border-left-color: var(--current-border);
+  box-shadow: 0 0 0 2px var(--current-border) inset;
+}
+
+/* ---------- Controls ---------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 14px 20px;
+  background: var(--panel-bg);
+  border-top: 1px solid var(--border);
+}
+
+.controls button {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.controls button:hover { background: var(--narration-bg); }
+.controls button:active { transform: translateY(1px); }
+#btn-play { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+
+/* ---------- Responsive-ish ---------- */
+@media (max-width: 760px) {
+  .layout { flex-direction: column; }
+  .sidebar { flex: 0 0 auto; max-width: none; overflow: visible; }
+  .header-side { text-align: left; }
+}

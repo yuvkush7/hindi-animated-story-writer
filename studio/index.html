@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Story Studio — हिंदी एनिमेटेड कहानी</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header: title, overview, moral, progress -->
+  <header class="app-header">
+    <div class="header-main">
+      <h1 id="story-title">कहानी लोड हो रही है…</h1>
+      <p id="story-overview" class="overview"></p>
+      <p id="story-moral" class="moral"></p>
+    </div>
+    <div class="header-side">
+      <div id="progress-indicator" class="progress">बीट 0 / 0</div>
+      <div id="audio-state" class="audio-state" data-state="idle">स्थिति: निष्क्रिय (idle)</div>
+      <div id="current-context" class="current-context"></div>
+    </div>
+  </header>
+
+  <!-- Visible error banner for fetch/parse failures -->
+  <div id="error-banner" class="error-banner" hidden></div>
+
+  <main class="layout">
+    <!-- Left sidebar: scenes + characters -->
+    <aside class="sidebar">
+      <section class="panel">
+        <h2 class="panel-title">दृश्य (Scenes)</h2>
+        <ul id="scene-list" class="scene-list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">पात्र (Characters)</h2>
+        <ul id="character-list" class="character-list"></ul>
+      </section>
+    </aside>
+
+    <!-- Main pane: full transcript of all beats -->
+    <section class="transcript-pane">
+      <div id="transcript" class="transcript" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- Controls -->
+  <footer class="controls">
+    <button type="button" id="btn-prev">◀ पिछली पंक्ति (Prev)</button>
+    <button type="button" id="btn-play">▶ Play</button>
+    <button type="button" id="btn-pause">⏸ Pause</button>
+    <button type="button" id="btn-resume">⏵ Resume</button>
+    <button type="button" id="btn-next">अगली पंक्ति (Next) ▶</button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

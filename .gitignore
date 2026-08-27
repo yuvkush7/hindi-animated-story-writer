@@ -1,0 +1,8 @@
+# Generated / local artifacts — never commit
+studio/audio/
+audio/
+story/script.txt
+story/script.md
+__pycache__/
+*.pyc
+.env

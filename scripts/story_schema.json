@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/story.json",
+  "title": "Hindi Animated Story - Canonical story.json",
+  "type": "object",
+  "required": ["story"],
+  "additionalProperties": true,
+  "properties": {
+    "story": {
+      "type": "object",
+      "required": ["title", "characters", "scenes"],
+      "additionalProperties": true,
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string",
+          "default": "hi"
+        },
+        "target_duration_seconds": {
+          "type": "integer"
+        },
+        "overview": {
+          "type": "string"
+        },
+        "moral": {
+          "type": "string"
+        },
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name"],
+            "additionalProperties": true,
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "name": { "type": "string", "minLength": 1 },
+              "age": { "type": "integer" },
+              "gender": { "type": "string" },
+              "role": { "type": "string" }
+            }
+          }
+        },
+        "scenes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "additionalProperties": true,
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "title": { "type": "string" },
+              "location": { "type": "string" },
+              "time": { "type": "string" },
+              "beats": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "speaker", "text"],
+                  "additionalProperties": true,
+                  "properties": {
+                    "id": { "type": "string", "minLength": 1 },
+                    "sequence": { "type": "integer" },
+                    "type": {
+                      "type": "string",
+                      "enum": ["narration", "dialogue"]
+                    },
+                    "speaker": { "type": "string", "minLength": 1 },
+                    "character_id": { "type": "string" },
+                    "text": { "type": "string", "minLength": 1 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
