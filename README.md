@@ -1,5 +1,8 @@
 # Hindi Animated Story Writer
 
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support%20☕-FFDD00?style=flat&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/yuvkush7)
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-sponsor%20%E2%9D%A4-DB61A2?style=flat&logo=githubsponsors)](https://github.com/sponsors/yuvkush7)
+
 A Claude Code skill for writing and producing **~20-minute, family-friendly Hindi (Devanagari) animated stories** — from story architecture to synced line-by-line audio in a local HTML Story Studio.
 
 ## What it does
@@ -138,3 +141,40 @@ The agent follows the 8-phase pipeline: story architecture → canonical `story.
 - **API key lives in `GEMINI_API_KEY`** — never hardcoded, committed, or printed.
 
 See [`SKILL.md`](SKILL.md) for the full 8-phase pipeline documentation.
+
+## ☕ Support this project
+
+This skill is free and open source. If it helped you produce stories (or make money with them), consider buying me a coffee:
+
+- **[Buy Me a Coffee](https://buymeacoffee.com/yuvkush7)** — one-time coffee ☕
+- **[GitHub Sponsors](https://github.com/sponsors/yuvkush7)** — monthly sponsorship ❤️
+
+Every coffee keeps new features coming (more voices, more languages, video export).
+
+### Set up your own support links (AI-agent prompt)
+
+Forked this repo, or want your own donation setup? Paste this into any AI agent and it wires everything up:
+
+```text
+Set up "support the author" links for my GitHub repository
+hindi-animated-story-writer under my account. Steps:
+
+1. Ask me which support platforms I use (Buy Me a Coffee, GitHub
+   Sponsors, Ko-fi, Patreon, etc.) and collect my username on each.
+   If I don't have one yet, walk me through signing up on that
+   platform's website first.
+2. Add two badges right under the README title using shields.io:
+   a yellow "Buy Me a Coffee" badge and a pink "GitHub Sponsors"
+   badge, each linking to my public page.
+3. Add a "Support this project" section at the bottom of the README
+   listing all my links with a short thank-you line.
+4. Create .github/FUNDING.yml in the repo containing only the
+   platforms I actually use (e.g. buy_me_a_coffee: myname,
+   github: myname) so GitHub shows the Sponsor button.
+5. Verify every link opens correctly, then commit and push the
+   changes with a clear commit message.
+
+Rules: only use platforms I confirmed, never invent links, and never
+put personal financial details (UPI ID, bank info) directly in the
+README — always link out to the platform page instead.
+```
